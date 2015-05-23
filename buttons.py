@@ -9,5 +9,6 @@ buttonState = 0
 buttonPin = 13
 
 while 1:
-	buttonState = buttonPin.read()
+	button = mraa.Gpio(buttonPin)
+	buttonState = button.read()
 	print buttonState
