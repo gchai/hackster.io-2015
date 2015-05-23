@@ -12,4 +12,4 @@ while 1:
 	button = mraa.Gpio(buttonPin)
 	buttonState = button.read()
 	print buttonState
-	time.sleep(.2)
+	time.sleep(1)
