@@ -2,11 +2,12 @@
   
 import mraa
 import sys
+import time
 
-pot = mraa.Aio(0)   
+tempio = mraa.Aio(0)   
 
 while 1:
-    potVal = float(pot.read())
-    temp = ((potVal*5.0/1024.0)-0.5) * 100
-    print(temp)
-
+    tempres = float(1023-tempio * 10000/tempio)
+    tempC = 1/log(tempres/10000)/3975+1/298.15)-273.15
+	time.sleep(.2)
+	print tempC
