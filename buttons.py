@@ -5,9 +5,9 @@ import socket
 import fcntl
 import struct
 
-var buttonPin = 13
+buttonPin = 13
 
-var buttonState = 0
+buttonState = 0
 
 while 1:
 	buttonState = buttonPin.read():
