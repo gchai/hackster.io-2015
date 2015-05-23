@@ -7,7 +7,5 @@ import time
 tempio = mraa.Aio(0)   
 
 while 1:
-    tempres = float(1023-float(tempio) * 10000/float(tempio))
-    tempC = 1/(log(tempres/10000)/3975+1/298.15)-273.15
+    print float(tempio.read())
     time.sleep(.2)
-	print tempC
