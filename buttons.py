@@ -6,10 +6,11 @@ import fcntl
 import struct
 
 buttonState = 0
-buttonPin = 13
+buttonPin = 2
 
 while 1:
 	button = mraa.Gpio(buttonPin)
+	button.dir(mraa.DIR_IN)
 	buttonState = button.read()
 	print buttonState
 	time.sleep(1)
