@@ -5,10 +5,9 @@ import socket
 import fcntl
 import struct
 
+buttonState = 0
 buttonPin = 13
 
-buttonState = 0
-
 while 1:
-	buttonState = mraa.Aio(buttonPin)
+	buttonState = buttonPin.read()
 	print buttonState
