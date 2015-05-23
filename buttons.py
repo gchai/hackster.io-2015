@@ -10,5 +10,5 @@ buttonPin = 13
 buttonState = 0
 
 while 1:
-	buttonState = buttonPin.read():
+	buttonState = buttonPin.read()
 	print buttonState
