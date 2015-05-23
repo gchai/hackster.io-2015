@@ -1,4 +1,3 @@
-
 #include <Wire.h>
 #include "rgb_lcd.h"
 #include <SPI.h>
