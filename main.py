@@ -67,8 +67,6 @@ def temperature():
 	return (tempC, tempF)
 
 def display(line1, line2):
-	myLCD.clear()
-	myLCD.setColor(255,255,0)
 	myLCD.setCursor(0,0)
 	myLCD.write(str(line1))
 
@@ -76,6 +74,9 @@ def display(line1, line2):
 	myLCD.write(str(line2))
 
 def main():
+	myLCD.clear()
+	myLCD.setColor(255,255,0)
+
 	tempUp = mraa.Gpio(tempUpPin)
 	tempUp.dir(mraa.DIR_IN)
 
@@ -113,6 +114,7 @@ def main():
 		display(line1, line2)
 		if startButton.read() == 1:
 			start = True
+		time.sleep(.3)
 
 	print "START"
 	
