@@ -29,14 +29,14 @@ def TempChange(temperature, tempUp, tempDown):
 				temperature -= 1
 	return temperature
 
-def TimeChange(temperature, timeUp, timeDown):
-	if clocktime >= 0:
+def TimeChange(timer, timeUp, timeDown):
+	if timer >= 0:
 		if timeUp.read() == 1:
-			clocktime += 10
-		if not(clocktime == 0):
+			timer += 10
+		if not(timer == 0):
 			if timeDown.read() == 1:
-				clocktime -= 10
-	return clocktime
+				timer -= 10
+	return timer
 
 # For Analog Reader
 def temperature():
