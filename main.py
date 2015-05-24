@@ -20,8 +20,7 @@ timeDownPin = 8
 startButtonPin = 10
 
 # Code is for Fahrenheit temperatures
-def TempChange(tempUp, tempDown):
-	global temperature
+def TempChange(temperature, tempUp, tempDown):
 	if temperature >= 80:
 		if tempUp.read() == 1:
 			temperature += 1
@@ -30,8 +29,7 @@ def TempChange(tempUp, tempDown):
 				temperature -= 1
 	return temperature
 
-def TimeChange(timeUp, timeDown):
-	global clocktime
+def TimeChange(temperature, timeUp, timeDown):
 	if clocktime >= 0:
 		if timeUp.read() == 1:
 			clocktime += 10
@@ -98,8 +96,8 @@ def main():
 	start = False
 
 	while start == False:
-		newTemp = TempChange(tempUp, tempDown)
-		newTime = TimeChange(timeUp, timeDown)
+		initTemp = TempChange(initTemp, tempUp, tempDown)
+		initTime = TimeChange(initTime, timeUp, timeDown)
 
 		line1 = "Temperature set: " + newTemp + "degrees F."
 		line2 = "Timer: " + newTime + " minutes"
