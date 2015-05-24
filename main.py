@@ -110,6 +110,10 @@ def main():
 		line1 = str(initTemp) + " degrees F."
 		line2 = str(initTime) + " seconds"
 		display(line1, line2)
+
+		print "Temperature Up: %d, Temperature Down: %d" % (tempUp.read(), tempDown.read())
+		print "Time Up: %d, Time Down: %d" % (timeUp.read(), timeDown.read())
+		
 		if startButton.read() == 1:
 			start = True
 		time.sleep(.2)
