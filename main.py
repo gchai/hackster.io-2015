@@ -101,9 +101,7 @@ def main():
 
 		line1 = "Temperature set: " + str(initTemp) + "degrees F."
 		line2 = "Timer: " + str(initTime) + " minutes"
-		display(newTemp, newTime)
+		display(line1, line2)
 		if startButton.read() == 1:
 			start = True
-	display(newTemp, newTime)
-
 main()
