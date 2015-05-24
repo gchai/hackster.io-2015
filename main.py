@@ -99,6 +99,9 @@ def main():
 
 	start = False
 
+	print "Initializing\n"
+	time.sleep(1)
+
 	while start == False:
 		initTemp = TempChange(initTemp, tempUp, tempDown)
 		initTime = TimeChange(initTime, timeUp, timeDown)
