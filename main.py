@@ -99,7 +99,7 @@ def main():
 
 	for x in xrange(0,3):
 		print "Initializing..."
-		time.sleep(1)
+		time.sleep(.4)
 	
 	print "Starting setup phase"
 	while start == False:
@@ -118,15 +118,29 @@ def main():
 			start = True
 		time.sleep(.2)
 
-	print "START"
+	print "Cooking..."
 	
-	# startTime = time.time()
-	# pot.write(1)
+	startTime = time.time()
 
-	# while time.time() - startTime <= initTime:
+	pauseTime = 0
 
+	while time.time() - startTime <= initTime:
+		pot.write(1)
+		if startButton.read() == 1:
+			pot.write(0)
 
-	# pot.write(0)
+			pauseTime = time.time() - startTime
+			while startButton.read() == 0:
+				print "PAUSED"
+				time.sleep(.5)
+
+			startTime = time.time() - pauseTime
+		line1 = "Target T: " + str(initTemp)
+		line2 = "Time Left: " + str(initTime - (time.time() - startTime))
+		display(line1, line2)
+
+	pot.write(0)
+	print "Cooking complete"
 
 
 main()

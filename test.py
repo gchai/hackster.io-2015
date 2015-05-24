@@ -2,12 +2,15 @@
   
 import mraa  
 import time  
-  
-led = mraa.Gpio(13)  
-led.dir(mraa.DIR_OUT)  
+
+pin = raw_input("What pin #?\n")
+pin = int(pin)  
+led = mraa.Gpio(pin)  
+led.dir(mraa.DIR_IN)  
   
 while True:  
-    led.write(1)  
-    time.sleep(0.2)  
-    led.write(0)  
-    time.sleep(0.2)
+    print led.read()
+    time.sleep(.3)
+ 
+
+
