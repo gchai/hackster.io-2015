@@ -26,18 +26,15 @@ def TempChange(temperature, tempUp, tempDown):
 	if temperature >= 80:
 		if tempUp.read() == 1:
 			temperature += 1
-		if not(temperature == 80):
-			if tempDown.read() == 1:
-				temperature -= 1
+		elif tempDown.read() == 1 and temperature > 80:
+			temperature -= 1
 	return temperature
 
 def TimeChange(timer, timeUp, timeDown):
-	if timer >= 0:
-		if timeUp.read() == 1:
-			timer += 60
-		if not(timer == 0):
-			if timeDown.read() == 1:
-				timer -= 60
+	if timeUp.read() == 1:
+		timer += 60
+	elif timeDown.read() == 1 and timer > 0:
+		timer -= 60
 	return timer
 
 # For Analog Reader
