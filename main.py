@@ -5,6 +5,7 @@
 
 import mraa
 import time
+import serial
 import math
 
 import pyupm_i2clcd as lcd
@@ -20,21 +21,22 @@ timeUpPin = 8
 timeDownPin = 10
 
 potPin = 13
+digitalTempSerial = 1
 
 # Code is for Fahrenheit temperatures
 def TempChange(temperature, tempUp, tempDown):
 	if temperature >= 80:
 		if tempUp.read() == 1:
-			temperature += 1
+			temperature += 2
 		elif tempDown.read() == 1 and temperature > 80:
-			temperature -= 1
+			temperature -= 2
 	return temperature
 
 def TimeChange(timer, timeUp, timeDown):
 	if timeUp.read() == 1:
-		timer += 60
+		timer += 30
 	elif timeDown.read() == 1 and timer > 0:
-		timer -= 60
+		timer -= 30
 	return timer
 
 # For Analog Reader
@@ -91,8 +93,14 @@ def main():
 
 	pot = mraa.Gpio(potPin)
 	pot.dir(mraa.DIR_OUT)
+	
+	uart = mraa.Uart(0)
+	digitalTemp = serial.Serial(uart.getDevicePath(), 9600)
 
-	initTemp = 100
+
+	
+
+	initTemp = 120
 	initTime = 600
 
 	start = False
@@ -124,6 +132,7 @@ def main():
 
 	pauseTime = 0
 
+
 	while time.time() - startTime <= initTime:
 		pot.write(1)
 		if startButton.read() == 1:
@@ -135,9 +144,20 @@ def main():
 				time.sleep(.5)
 
 			startTime = time.time() - pauseTime
-		line1 = "Target T: " + str(initTemp)
+
+
+		currentTemp = digitalTemp.read(6)
+		currentTemp = str(currentTemp)
+		print currentTemp
+		line1 = "Temp: " + currentTemp
 		line2 = "Time Left: " + str(initTime - (time.time() - startTime))
 		display(line1, line2)
+		time.sleep(.2)
+		
+		if digitalTemp.read(6) >= initTemp:
+			pot.write(0)
+		if digitalTemp.read(6) <= initTemp-2:
+			pot.write(1)
 
 	pot.write(0)
 	print "Cooking complete"
