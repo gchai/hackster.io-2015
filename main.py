@@ -95,11 +95,13 @@ def main():
 	initTemp = 100
 	initTime = 10
 
+	start = False
+
 	while start == False:
 		newTemp = TempChange(tempUp, tempDown)
 		newTime = TimeChange(timeUp, timeDown)
 
-		line1 = "Temperature is: " + newTemp + "degrees F."
+		line1 = "Temperature set: " + newTemp + "degrees F."
 		line2 = "Timer: " + newTime + " minutes"
 		display(newTemp, newTime)
 		if startButton.read() == 1:
