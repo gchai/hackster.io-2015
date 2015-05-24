@@ -107,3 +107,5 @@ def main():
 		if startButton.read() == 1:
 			start = True
 	display(newTemp, newTime)
+
+main()
