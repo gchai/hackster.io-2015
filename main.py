@@ -99,10 +99,12 @@ def main():
 
 	start = False
 
-	print "Initializing\n"
-	time.sleep(1)
+	for x in xrange(0,3):
+		print "Initializing..."
+		time.sleep(1)
 
 	while start == False:
+		print "Starting setup phase."
 		initTemp = TempChange(initTemp, tempUp, tempDown)
 		initTime = TimeChange(initTime, timeUp, timeDown)
 
