@@ -25,5 +25,5 @@ while 1:
 	timeDown = mraa.Gpio(timeDownPin)
 	timeDown.dir(mraa.DIR_IN)
 
-	print "Temperature Up: %d, Temperature Down: %d" % (tempUp, tempDown)
-	print "Time Up: %d, Time Down: %d" % (timeUp, timeDown)
+	print "Temperature Up: %d, Temperature Down: %d" % (tempUp.read(), tempDown.read())
+	print "Time Up: %d, Time Down: %d" % (timeUp.read(), timeDown.read())
