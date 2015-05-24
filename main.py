@@ -99,8 +99,8 @@ def main():
 		initTemp = TempChange(initTemp, tempUp, tempDown)
 		initTime = TimeChange(initTime, timeUp, timeDown)
 
-		line1 = "Temperature set: " + newTemp + "degrees F."
-		line2 = "Timer: " + newTime + " minutes"
+		line1 = "Temperature set: " + initTemp + "degrees F."
+		line2 = "Timer: " + initTime + " minutes"
 		display(newTemp, newTime)
 		if startButton.read() == 1:
 			start = True
