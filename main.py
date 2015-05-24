@@ -39,6 +39,15 @@ def TimeChange(timeUp, timeDown):
 		time -= 10
 	return time
 
+tempDown = mraa.Gpio(tempDownPin)
+tempDown.dir(mraa.DIR_IN)
+
+timeUp = mraa.Gpio(timeUpPin)
+timeUp.dir(mraa.DIR_IN)
+
+timeDown = mraa.Gpio(timeDownPin)
+timeDown.dir(mraa.DIR_IN)
+
 while 1:
 	time.sleep(.5)
 	
