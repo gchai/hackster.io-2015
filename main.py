@@ -103,9 +103,10 @@ def main():
 	for x in xrange(0,3):
 		print "Initializing..."
 		time.sleep(1)
-
+	
+	print "Starting setup phase"
 	while start == False:
-		print "Starting setup phase."
+
 		initTemp = TempChange(initTemp, tempUp, tempDown)
 		initTime = TimeChange(initTime, timeUp, timeDown)
 
@@ -114,7 +115,7 @@ def main():
 		display(line1, line2)
 		if startButton.read() == 1:
 			start = True
-		time.sleep(.3)
+		time.sleep(.2)
 
 	print "START"
 	
