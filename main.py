@@ -108,7 +108,7 @@ def main():
 		initTime = TimeChange(initTime, timeUp, timeDown)
 
 		line1 = str(initTemp) + " degrees F."
-		line2 = str(initTime/60) + " minutes"
+		line2 = str(initTime) + " seconds"
 		display(line1, line2)
 		if startButton.read() == 1:
 			start = True
