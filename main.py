@@ -5,12 +5,25 @@ import socket
 import fcntl
 import struct
 
-buttonState = 0
-buttonPin = 4
+tempUpPin = 2 
+tempDownPin = 4
+timeUpPin = 6
+timeDownPin = 8
 
 while 1:
 	time.sleep(.5)
-	button = mraa.Gpio(buttonPin)
-	button.dir(mraa.DIR_IN)
-	buttonState = button.read()
-	print buttonState
+
+	tempUp = mraa.Gpio(tempUpPin)
+	tempUp.dir(mraa.DIR_IN)
+
+	tempDown = mraa.Gpio(tempDownPin)
+	tempDown.dir(mraa.DIR_IN)
+
+	timeUp = mraa.Gpio(timeUpPin)
+	timeUp.dir(mraa.DIR_IN)
+
+	timeDown = mraa.Gpio(timeDownPin)
+	timeDown.dir(mraa.DIR_IN)
+
+	print "Temperature Up: %d, Temperature Down: %d" % (tempUp, tempDown)
+	print "Time Up: %d, Time Down: %d" % (timeUp, timeDown)
