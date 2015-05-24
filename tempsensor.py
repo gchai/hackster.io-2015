@@ -1,9 +1,9 @@
-import mraa
+from w1thermsensor import W1ThermSensor
 
-tempPin = 13
-
-tempSensor = mraa.Gpio(tempPin)
-tempSensor.dir(mraa.DIR_IN)
+sensor = W1ThermSensor(W1ThermSensor.THERM_SENSOR_DS18B20, "00000588806a")
+temperature_in_celsius = sensor.get_temperature()
 
 while 1:
-	print tempSensor.read()
+	print temperature_in_celsius
+	
+
