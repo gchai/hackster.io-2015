@@ -13,11 +13,13 @@ tempio = mraa.Aio(0)
 # Initialize Jhd1313m1 @ 0x3E (LCD_ADDRESS) and 0x62 (RGB_ADDRESS)   
 myLCD = lcd.Jhd1313m1(0, 0x3E, 0x62)
 
-tempUpPin = 2 
-tempDownPin = 4
-timeUpPin = 6
-timeDownPin = 8
-startButtonPin = 10
+startButtonPin = 2
+tempUpPin = 4
+tempDownPin = 6
+timeUpPin = 8
+timeDownPin = 10
+
+potPin = 13
 
 # Code is for Fahrenheit temperatures
 def TempChange(temperature, tempUp, tempDown):
@@ -32,15 +34,14 @@ def TempChange(temperature, tempUp, tempDown):
 def TimeChange(timer, timeUp, timeDown):
 	if timer >= 0:
 		if timeUp.read() == 1:
-			timer += 10
+			timer += 60
 		if not(timer == 0):
 			if timeDown.read() == 1:
-				timer -= 10
+				timer -= 60
 	return timer
 
 # For Analog Reader
 def temperature():
-
 	tempread = tempio.read()
 
 	time.sleep(.5)
@@ -90,8 +91,11 @@ def main():
 	startButton = mraa.Gpio(startButtonPin)
 	startButton.dir(mraa.DIR_IN)
 
+	pot = mraa.Gpio(potPin)
+	pot.dir(mraa.DIR_OUT)
+
 	initTemp = 100
-	initTime = 10
+	initTime = 600
 
 	start = False
 
@@ -99,9 +103,21 @@ def main():
 		initTemp = TempChange(initTemp, tempUp, tempDown)
 		initTime = TimeChange(initTime, timeUp, timeDown)
 
-		line1 = str(initTemp) + "degrees F."
-		line2 = str(initTime) + " minutes"
+		line1 = str(initTemp) + " degrees F."
+		line2 = str(initTime/60) + " minutes"
 		display(line1, line2)
 		if startButton.read() == 1:
 			start = True
+
+	print "START"
+	
+	# startTime = time.time()
+	# pot.write(1)
+
+	# while time.time() - startTime <= initTime:
+
+
+	# pot.write(0)
+
+
 main()
