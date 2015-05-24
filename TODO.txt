@@ -1,0 +1,30 @@
+Completed:
+Buttons.py
+Display
+Temperature
+
+TODO:
+Digital waterproof temperature sensor
+Add Power button
+Accurately heat to temperature, and remain at that temperature
+Notifications? 
+	Twilio? Texts/Phone Calls
+	Buzzer
+Safety precautions
+
+
+Instruction List:
+	Setup:
+		1. 5 Buttons:
+			1. Temperature Up
+			2. Temperature Down
+			3. Time Up
+			4. Time Down
+			5. Start (doubles as power off button while running)
+		2. Display:
+			1. Current Temperature
+			2. Duration left - Count down after temperature is reached
+			3. On button press:
+				a. Show set temperature
+				b. Show set time
+				c. Power On/Off
