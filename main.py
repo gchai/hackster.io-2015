@@ -6,7 +6,7 @@ import fcntl
 import struct
 
 buttonState = 0
-buttonPin = 2
+buttonPin = 4
 
 while 1:
 	time.sleep(.5)
