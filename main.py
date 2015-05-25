@@ -100,7 +100,7 @@ def main():
 
 	
 
-	initTemp = 120
+	initTemp = 140
 	initTime = 600
 
 	start = False
@@ -132,9 +132,10 @@ def main():
 
 	pauseTime = 0
 
+	pot.write(1)
 
 	while time.time() - startTime <= initTime:
-		pot.write(1)
+
 		if startButton.read() == 1:
 			pot.write(0)
 
@@ -144,7 +145,7 @@ def main():
 				time.sleep(.5)
 
 			startTime = time.time() - pauseTime
-
+			pot.write(1)
 
 		currentTemp = digitalTemp.read(6)
 		currentTemp = str(currentTemp)
@@ -156,7 +157,7 @@ def main():
 		
 		if digitalTemp.read(6) >= initTemp:
 			pot.write(0)
-		if digitalTemp.read(6) <= initTemp-2:
+		else:
 			pot.write(1)
 
 	pot.write(0)
